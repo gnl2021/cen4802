@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="todolist">
+    <output-path>$PROJECT_DIR$/out/artifacts/todolist</output-path>
+    <root id="archive" name="todolist.war" />
+  </artifact>
+</component>
