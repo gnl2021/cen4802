@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="todolist" default="all">
+  
+  
+  <property file="todolist.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.egg"/>
+    <include name="*.zip"/>
+    <include name="*.war"/>
+    <include name="*.swc"/>
+    <include name="*.ear"/>
+    <include name="*.jar"/>
+    <include name="*.klib"/>
+    <include name="*.ane"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.liberica-17" value="${jdk.home.liberica-17}/bin"/>
+  <path id="jdk.classpath.liberica-17">
+    <fileset dir="${jdk.home.liberica-17}">
+      <include name="../liberica-17.0.2!/java.base"/>
+      <include name="../liberica-17.0.2!/java.compiler"/>
+      <include name="../liberica-17.0.2!/java.datatransfer"/>
+      <include name="../liberica-17.0.2!/java.desktop"/>
+      <include name="../liberica-17.0.2!/java.instrument"/>
+      <include name="../liberica-17.0.2!/java.logging"/>
+      <include name="../liberica-17.0.2!/java.management"/>
+      <include name="../liberica-17.0.2!/java.management.rmi"/>
+      <include name="../liberica-17.0.2!/java.naming"/>
+      <include name="../liberica-17.0.2!/java.net.http"/>
+      <include name="../liberica-17.0.2!/java.prefs"/>
+      <include name="../liberica-17.0.2!/java.rmi"/>
+      <include name="../liberica-17.0.2!/java.scripting"/>
+      <include name="../liberica-17.0.2!/java.se"/>
+      <include name="../liberica-17.0.2!/java.security.jgss"/>
+      <include name="../liberica-17.0.2!/java.security.sasl"/>
+      <include name="../liberica-17.0.2!/java.smartcardio"/>
+      <include name="../liberica-17.0.2!/java.sql"/>
+      <include name="../liberica-17.0.2!/java.sql.rowset"/>
+      <include name="../liberica-17.0.2!/java.transaction.xa"/>
+      <include name="../liberica-17.0.2!/java.xml"/>
+      <include name="../liberica-17.0.2!/java.xml.crypto"/>
+      <include name="../liberica-17.0.2!/javafx.base"/>
+      <include name="../liberica-17.0.2!/javafx.controls"/>
+      <include name="../liberica-17.0.2!/javafx.fxml"/>
+      <include name="../liberica-17.0.2!/javafx.graphics"/>
+      <include name="../liberica-17.0.2!/javafx.media"/>
+      <include name="../liberica-17.0.2!/javafx.swing"/>
+      <include name="../liberica-17.0.2!/javafx.web"/>
+      <include name="../liberica-17.0.2!/jdk.accessibility"/>
+      <include name="../liberica-17.0.2!/jdk.attach"/>
+      <include name="../liberica-17.0.2!/jdk.charsets"/>
+      <include name="../liberica-17.0.2!/jdk.compiler"/>
+      <include name="../liberica-17.0.2!/jdk.crypto.cryptoki"/>
+      <include name="../liberica-17.0.2!/jdk.crypto.ec"/>
+      <include name="../liberica-17.0.2!/jdk.dynalink"/>
+      <include name="../liberica-17.0.2!/jdk.editpad"/>
+      <include name="../liberica-17.0.2!/jdk.hotspot.agent"/>
+      <include name="../liberica-17.0.2!/jdk.httpserver"/>
+      <include name="../liberica-17.0.2!/jdk.incubator.foreign"/>
+      <include name="../liberica-17.0.2!/jdk.incubator.vector"/>
+      <include name="../liberica-17.0.2!/jdk.internal.ed"/>
+      <include name="../liberica-17.0.2!/jdk.internal.jvmstat"/>
+      <include name="../liberica-17.0.2!/jdk.internal.le"/>
+      <include name="../liberica-17.0.2!/jdk.internal.opt"/>
+      <include name="../liberica-17.0.2!/jdk.internal.vm.ci"/>
+      <include name="../liberica-17.0.2!/jdk.internal.vm.compiler"/>
+      <include name="../liberica-17.0.2!/jdk.internal.vm.compiler.management"/>
+      <include name="../liberica-17.0.2!/jdk.jartool"/>
+      <include name="../liberica-17.0.2!/jdk.javadoc"/>
+      <include name="../liberica-17.0.2!/jdk.jcmd"/>
+      <include name="../liberica-17.0.2!/jdk.jconsole"/>
+      <include name="../liberica-17.0.2!/jdk.jdeps"/>
+      <include name="../liberica-17.0.2!/jdk.jdi"/>
+      <include name="../liberica-17.0.2!/jdk.jdwp.agent"/>
+      <include name="../liberica-17.0.2!/jdk.jfr"/>
+      <include name="../liberica-17.0.2!/jdk.jlink"/>
+      <include name="../liberica-17.0.2!/jdk.jpackage"/>
+      <include name="../liberica-17.0.2!/jdk.jshell"/>
+      <include name="../liberica-17.0.2!/jdk.jsobject"/>
+      <include name="../liberica-17.0.2!/jdk.jstatd"/>
+      <include name="../liberica-17.0.2!/jdk.localedata"/>
+      <include name="../liberica-17.0.2!/jdk.management"/>
+      <include name="../liberica-17.0.2!/jdk.management.agent"/>
+      <include name="../liberica-17.0.2!/jdk.management.jfr"/>
+      <include name="../liberica-17.0.2!/jdk.naming.dns"/>
+      <include name="../liberica-17.0.2!/jdk.naming.rmi"/>
+      <include name="../liberica-17.0.2!/jdk.net"/>
+      <include name="../liberica-17.0.2!/jdk.nio.mapmode"/>
+      <include name="../liberica-17.0.2!/jdk.random"/>
+      <include name="../liberica-17.0.2!/jdk.sctp"/>
+      <include name="../liberica-17.0.2!/jdk.security.auth"/>
+      <include name="../liberica-17.0.2!/jdk.security.jgss"/>
+      <include name="../liberica-17.0.2!/jdk.unsupported"/>
+      <include name="../liberica-17.0.2!/jdk.unsupported.desktop"/>
+      <include name="../liberica-17.0.2!/jdk.xml.dom"/>
+      <include name="../liberica-17.0.2!/jdk.zipfs"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.liberica-17}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.liberica-17}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.liberica-17"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.hibernate_5.4.11-5.4.11.classpath">
+    <pathelement location="${basedir}/lib/FastInfoset-1.2.15.jar"/>
+    <pathelement location="${basedir}/lib/antlr-2.7.7.jar"/>
+    <pathelement location="${basedir}/lib/byte-buddy-1.10.7.jar"/>
+    <pathelement location="${basedir}/lib/classmate-1.5.1.jar"/>
+    <pathelement location="${basedir}/lib/dom4j-2.1.1.jar"/>
+    <pathelement location="${basedir}/lib/hibernate-commons-annotations-5.1.0.Final.jar"/>
+    <pathelement location="${basedir}/lib/hibernate-core-5.4.11.Final.jar"/>
+    <pathelement location="${basedir}/lib/istack-commons-runtime-3.0.7.jar"/>
+    <pathelement location="${basedir}/lib/jandex-2.1.1.Final.jar"/>
+    <pathelement location="${basedir}/lib/javassist-3.24.0-GA.jar"/>
+    <pathelement location="${basedir}/lib/javax.activation-api-1.2.0.jar"/>
+    <pathelement location="${basedir}/lib/javax.persistence-api-2.2.jar"/>
+    <pathelement location="${basedir}/lib/jaxb-api-2.3.1.jar"/>
+    <pathelement location="${basedir}/lib/jaxb-runtime-2.3.1.jar"/>
+    <pathelement location="${basedir}/lib/jboss-logging-3.3.2.Final.jar"/>
+    <pathelement location="${basedir}/lib/jboss-transaction-api_1.2_spec-1.1.1.Final.jar"/>
+    <pathelement location="${basedir}/lib/stax-ex-1.8.jar"/>
+    <pathelement location="${basedir}/lib/txw2-2.3.1.jar"/>
+  </path>
+  
+  <path id="library.java_ee_6-java_ee_6.classpath">
+    <pathelement location="${basedir}/lib/javax.ejb.jar"/>
+    <pathelement location="${basedir}/lib/javax.jms.jar"/>
+    <pathelement location="${basedir}/lib/javax.resource.jar"/>
+    <pathelement location="${basedir}/lib/javax.servlet.jsp.jstl.jar"/>
+    <pathelement location="${basedir}/lib/javax.servlet.jsp_2.jar"/>
+    <pathelement location="${basedir}/lib/javax.servlet_2.jar"/>
+  </path>
+  
+  <path id="library.jax-ws-glassfish_/_jax-ws_2.2_ri_/_metro_1.x_/_jwsdp_2.2.classpath">
+    <pathelement location="${basedir}/lib/FastInoset.jar"/>
+    <pathelement location="${basedir}/lib/gmbal-api-only.jar"/>
+    <pathelement location="${basedir}/lib/ha-api.jar"/>
+    <pathelement location="${basedir}/lib/javax.annotation_2.jar"/>
+    <pathelement location="${basedir}/lib/jaxb-api.jar"/>
+    <pathelement location="${basedir}/lib/jaxb-impl.jar"/>
+    <pathelement location="${basedir}/lib/jaxb-xjc.jar"/>
+    <pathelement location="${basedir}/lib/jaxws-api.jar"/>
+    <pathelement location="${basedir}/lib/jaxws-rt.jar"/>
+    <pathelement location="${basedir}/lib/jaxws-tools.jar"/>
+    <pathelement location="${basedir}/lib/jsr181-api.jar"/>
+    <pathelement location="${basedir}/lib/mail.jar"/>
+    <pathelement location="${basedir}/lib/management-api.jar"/>
+    <pathelement location="${basedir}/lib/mimepull.jar"/>
+    <pathelement location="${basedir}/lib/policy.jar"/>
+    <pathelement location="${basedir}/lib/saaj-api.jar"/>
+    <pathelement location="${basedir}/lib/saaj-impl.jar"/>
+    <pathelement location="${basedir}/lib/stax-ex.jar"/>
+    <pathelement location="${basedir}/lib/stax2-api.jar"/>
+    <pathelement location="${basedir}/lib/streambuffer.jar"/>
+    <pathelement location="${basedir}/lib/woodstox-core-asl.jar"/>
+  </path>
+  
+  <path id="library.jstl.classpath">
+    <pathelement location="${basedir}/../../../../../Downloads/jakarta-taglibs-standard-1.1.2/lib/jstl.jar"/>
+  </path>
+  
+  <path id="library.mysql-connector-java-8.0.27.classpath">
+    <pathelement location="${basedir}/../../../../../Downloads/mysql-connector-java-8.0.27/mysql-connector-java-8.0.27.jar"/>
+  </path>
+  
+  <path id="library.mysql-connector-java-8.0.classpath">
+    <fileset dir="${basedir}/../../../../../Downloads/mysql-connector-java-8.0.27">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  
+  <path id="library.standard.classpath">
+    <pathelement location="${basedir}/../../../../../Downloads/jakarta-taglibs-standard-1.1.2/lib/standard.jar"/>
+  </path>
+  
+  
+  <!-- Global Libraries -->
+  
+  <path id="library.bootstrap.classpath">
+    <pathelement location="/Users/impdmacbook/Library/Application Support/JetBrains/IntelliJIdea2021.2/javascript/extLibs/http_stackpath.bootstrapcdn.com_bootstrap_4.3.1_css_bootstrap.css"/>
+  </path>
+  
+  
+  <!-- Application Server Libraries -->
+
+  <!-- Modules -->
+
+
+  <!-- Module todoList -->
+
+  <dirname property="module.todolist.basedir" file="${ant.file}"/>
+
+
+  <property name="module.jdk.home.todolist" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.todolist" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.todolist" value="${project.jdk.classpath}"/>
+
+  <property name="compiler.args.todolist" value="-encoding UTF-8 -source 17 -target 17 ${compiler.args}"/>
+
+  <property name="todolist.output.dir" value="${module.todolist.basedir}/out/production/todoList"/>
+  <property name="todolist.testoutput.dir" value="${module.todolist.basedir}/out/test/todoList"/>
+
+  <path id="todolist.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+
+  <path id="todolist.module.production.classpath">
+    <path refid="${module.jdk.classpath.todolist}"/>
+    <path refid="library.hibernate_5.4.11-5.4.11.classpath"/>
+    <path refid="library.mysql-connector-java-8.0.classpath"/>
+    <path refid="library.mysql-connector-java-8.0.27.classpath"/>
+    <path refid="library.jax-ws-glassfish_/_jax-ws_2.2_ri_/_metro_1.x_/_jwsdp_2.2.classpath"/>
+    <path refid="library.java_ee_6-java_ee_6.classpath"/>
+    <path refid="library.bootstrap.classpath"/>
+    <path refid="library.jstl.classpath"/>
+    <path refid="library.standard.classpath"/>
+  </path>
+
+  <path id="todolist.runtime.production.module.classpath">
+    <pathelement location="${todolist.output.dir}"/>
+    <path refid="library.hibernate_5.4.11-5.4.11.classpath"/>
+    <path refid="library.mysql-connector-java-8.0.classpath"/>
+    <path refid="library.mysql-connector-java-8.0.27.classpath"/>
+    <path refid="library.jax-ws-glassfish_/_jax-ws_2.2_ri_/_metro_1.x_/_jwsdp_2.2.classpath"/>
+    <path refid="library.java_ee_6-java_ee_6.classpath"/>
+    <path refid="library.bootstrap.classpath"/>
+    <path refid="library.jstl.classpath"/>
+    <path refid="library.standard.classpath"/>
+  </path>
+
+  <path id="todolist.module.classpath">
+    <path refid="${module.jdk.classpath.todolist}"/>
+    <pathelement location="${todolist.output.dir}"/>
+    <path refid="library.hibernate_5.4.11-5.4.11.classpath"/>
+    <path refid="library.mysql-connector-java-8.0.classpath"/>
+    <path refid="library.mysql-connector-java-8.0.27.classpath"/>
+    <path refid="library.jax-ws-glassfish_/_jax-ws_2.2_ri_/_metro_1.x_/_jwsdp_2.2.classpath"/>
+    <path refid="library.java_ee_6-java_ee_6.classpath"/>
+    <path refid="library.bootstrap.classpath"/>
+    <path refid="library.jstl.classpath"/>
+    <path refid="library.standard.classpath"/>
+  </path>
+
+  <path id="todolist.runtime.module.classpath">
+    <pathelement location="${todolist.testoutput.dir}"/>
+    <pathelement location="${todolist.output.dir}"/>
+    <path refid="library.hibernate_5.4.11-5.4.11.classpath"/>
+    <path refid="library.mysql-connector-java-8.0.classpath"/>
+    <path refid="library.mysql-connector-java-8.0.27.classpath"/>
+    <path refid="library.jax-ws-glassfish_/_jax-ws_2.2_ri_/_metro_1.x_/_jwsdp_2.2.classpath"/>
+    <path refid="library.java_ee_6-java_ee_6.classpath"/>
+    <path refid="library.bootstrap.classpath"/>
+    <path refid="library.jstl.classpath"/>
+    <path refid="library.standard.classpath"/>
+  </path>
+
+
+  <patternset id="excluded.from.module.todolist">
+    <patternset refid="ignored.files"/>
+  </patternset>
+
+  <patternset id="excluded.from.compilation.todolist">
+    <patternset refid="excluded.from.module.todolist"/>
+  </patternset>
+
+  <path id="todolist.module.sourcepath">
+    <dirset dir="${module.todolist.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+
+
+  <target name="compile.module.todolist" depends="compile.module.todolist.production" description="Compile module todoList"/>
+
+  <target name="compile.module.todolist.production" description="Compile module todoList; production classes">
+    <mkdir dir="${todolist.output.dir}"/>
+    <javac destdir="${todolist.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.todolist}/javac">
+      <compilerarg line="${compiler.args.todolist}"/>
+      <bootclasspath refid="todolist.module.bootclasspath"/>
+      <classpath refid="todolist.module.production.classpath"/>
+      <src refid="todolist.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.todolist"/>
+    </javac>
+
+    <copy todir="${todolist.output.dir}">
+      <fileset dir="${module.todolist.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+
+
+
+  <target name="clean.module.todolist" description="cleanup module">
+    <delete dir="${todolist.output.dir}"/>
+    <delete dir="${todolist.testoutput.dir}"/>
+  </target>
+
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+
+  <target name="clean" depends="clean.module.todolist" description="cleanup all"/>
+
+  <target name="build.modules" depends="init, clean, compile.module.todolist" description="build all modules"/>
+
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.todolist:war_exploded" value="${basedir}/out/artifacts/todoList_war_exploded"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="temp.jar.path.todoList_war exploded.war" value="${artifacts.temp.dir}/todoList_war exploded.war"/>
+  </target>
+
+  <target name="webwar.todolist:war_exploded" depends="init.artifacts, compile.module.todolist" description="Build &#39;todoList:war exploded&#39; artifact">
+    <echo>todoList - Welcome to Apache Ant!</echo>
+
+    <property name="webwar" value="todoList_war_exploded"/>
+    <zip destfile="${web}/todoList_war exploded.war">
+      <zipfileset dir="${todolist.output.dir}" prefix="WEB-INF/classes"/>
+      <zipfileset file="${basedir}/lib/dom4j-2.1.1.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/istack-commons-runtime-3.0.7.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/classmate-1.5.1.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/byte-buddy-1.10.7.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/FastInfoset-1.2.15.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/hibernate-commons-annotations-5.1.0.Final.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/antlr-2.7.7.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/hibernate-core-5.4.11.Final.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/javassist-3.24.0-GA.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/javax.activation-api-1.2.0.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/jaxb-api-2.3.1.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/jboss-logging-3.3.2.Final.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/jandex-2.1.1.Final.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/jboss-transaction-api_1.2_spec-1.1.1.Final.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/javax.persistence-api-2.2.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/jaxb-runtime-2.3.1.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/txw2-2.3.1.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/stax-ex-1.8.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/../../../../../Downloads/mysql-connector-java-8.0.27/mysql-connector-java-8.0.27.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/../../../../../Downloads/mysql-connector-java-8.0.27/mysql-connector-java-8.0.27.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/gmbal-api-only.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/javax.annotation_2.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/ha-api.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/jaxws-api.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/jaxb-api.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/FastInoset.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/jaxb-impl.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/jsr181-api.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/jaxb-xjc.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/management-api.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/mimepull.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/mail.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/jaxws-tools.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/saaj-api.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/policy.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/stax2-api.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/streambuffer.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/stax-ex.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/saaj-impl.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/jaxws-rt.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/woodstox-core-asl.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/../../../../../Downloads/jakarta-taglibs-standard-1.1.2/lib/jstl.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/../../../../../Downloads/jakarta-taglibs-standard-1.1.2/lib/standard.jar" prefix="WEB-INF/lib"/>
+      <zipfileset dir="${basedir}/web"/>
+      <zipfileset file="${basedir}/META-INF/context.xml" prefix="META-INF"/>
+      <zipfileset file="${basedir}/web/WEB-INF/web.xml" prefix="WEB-INF"/>
+      <zipfileset file="${basedir}/META-INF/application.xml" prefix="META-INF"/>
+    </zip>
+  </target>
+
+
+
+  <target name="all" depends="build.modules" description="build all"/>
+</project>

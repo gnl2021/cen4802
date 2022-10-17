@@ -1,0 +1,23 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+        <class name = "Task" table = "Task">
+
+        <meta attribute = "class-description">
+            This class contains the task detail.
+        </meta>
+
+        <id name = "ID" type = "int" column = "id">
+            <generator class="native"/>
+        </id>
+
+        <property name = "name" column = "name" type = "string"/>
+        <property name = "prioID" column = "priority" type = "integer"/>
+        <property name = "Done" column = "completion" type = "boolean"/>
+
+
+        </class>
+</hibernate-mapping>
